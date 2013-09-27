@@ -1,0 +1,19 @@
+{
+    "projectName": "Project Name",
+    "repository": "https://github.com/project-name",
+    "developer": "Gabriel Mateus",
+    "github": "git.io/gabrielmateus",
+    "startin": "27/09/2013",
+    "lastupdate": "00/00/00",
+    "version": "1.0.0",
+    "devDependencies": {
+        "grunt": ">= 0.4.0",
+        "grunt-html-build": ">= 0.2.0",
+        "grunt-contrib-uglify": ">= 0.2.0",
+        "grunt-contrib-jshint": ">= 0.6.0",
+        "grunt-contrib-watch": ">= 0.5.0",
+        "grunt-contrib-less": ">= 0.6.0",
+        "grunt-shell": ">= 0.3.0",
+        "grunt-csso": ">= 0.5.0"
+    }
+}
