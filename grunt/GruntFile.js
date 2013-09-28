@@ -13,9 +13,13 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        views: "../views/",
-        assets: "../assets/",
         root: "../",
+        assets: "../assets/",
+        views: "../views/",
+        partials: "<%= views %>partials/",
+        staging: "<%= views %>staging/",
+        development: "<%= views %>development/",
+        production: "<%= views %>production/",
 
         less: {
             site: {
@@ -62,8 +66,8 @@ module.exports = function(grunt) {
         },
         htmlbuild: {
             dist: {
-                src: '<%= root %>*.html',
-                dest: '<%= root %>production/',
+                src: '<%= development %>*.html',
+                dest: '<%= staging %>/',
                 options: {
                     // beautify: true,
                     // scripts: {
@@ -74,30 +78,36 @@ module.exports = function(grunt) {
                     //     min: '<%= assets %>stylesheets/style.min.css'
                     // },
                     sections: {
-                        head: '<%= root %>views/head.html',
-                        'main-header': '<%= root %>views/main-header.html',
-                        'main-footer': '<%= root %>views/main-footer.html',
-                        'main-aside': '<%= root %>views/main-aside.html'
+                        head: '<%= partials %>head.html',
+                        'main-header': '<%= partials %>main-header.html',
+                        'main-footer': '<%= partials %>main-footer.html',
+                        'main-aside': '<%= partials %>main-aside.html'
                     }
                 }
             }
         },
         htmlmin: {
             dist: {
-              options: {
+                options: {
                     removeComments: true,
                     collapseWhitespace: true,
                     collapseBooleanAttributes: true,
                     removeRedundantAttributes: true,
                     removeEmptyAttributes: true,
-                    removeOptionalTags: true
-              },
-              files: {
-                '<%= root %>production/': '<%= root %>*.html',
-              }
+                    removeOptionalTags: true,
+                    useShortDoctype: true
+                },
+                expand: true,
+                cwd: '<%= staging %>',
+                src: ['*.html'],
+                dest: '<%= production %>',
+                ext: '.min.html',
             }
         },
         watch: {
+            options: {
+                livereload: true
+            },
             scripts: {
                 files: [
                     '!../javascript/custom.js',
@@ -115,11 +125,16 @@ module.exports = function(grunt) {
             },
             html: {
                 files: [
-                    '<%= views %>/*.html',
-                    '<%= root %>application.html'
+                    '<%= partials %>*.html'
                 ],
                 tasks: ['htmlbuild']
-            }
+            },
+            html2: {
+                files: [
+                    '<%= partials %>*.html'
+                ],
+                tasks: ['htmlmin']
+            },
         }
     });
 
@@ -141,6 +156,7 @@ module.exports = function(grunt) {
         'csso',
         // 'jshint',
         // 'uglify',
-        'htmlbuild'
+        'htmlbuild',
+        'htmlmin'
     ]);
 };
