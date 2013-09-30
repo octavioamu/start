@@ -11,12 +11,16 @@ This is what I need to start a simple Front End project.
     * less
     * stylesheet
 + grunt
-+ produciont
-+ views
++ producion
+- views
+    * development
+    * partials
+    * producion
+    * staging
 
 ## Grunt 
 
-Need [Grunt](http://gruntjs.com), and these are the grunt tasks:
+Need [Grunt](http://gruntjs.com) to use, and these are the tasks:
    * [grunt-csso](https://github.com/t32k/grunt-csso)
    * [grunt-spritesmith](https://github.com/Ensighten/grunt-spritesmith)
    * [grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less)
