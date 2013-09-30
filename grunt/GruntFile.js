@@ -16,6 +16,7 @@ module.exports = function(grunt) {
         root: "../",
         assets: "../assets/",
         views: "../views/",
+        images: "<%= assets %>images/",
         partials: "<%= views %>partials/",
         staging: "<%= views %>staging/",
         development: "<%= views %>development/",
@@ -104,6 +105,15 @@ module.exports = function(grunt) {
                 ext: '.min.html',
             }
         },
+        sprite:{
+            all: {
+                src: ['<%= images %>*.png', '!<%= images %>sprite.png' ],
+                destImg: '<%= images %>sprite.png',
+                destCSS: '<%= assets %>less/sprite.less',
+                algorithm: 'left-right',
+                padding: 2,
+            }
+        },
         watch: {
             options: {
                 livereload: true
@@ -141,10 +151,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-csso');
     grunt.loadNpmTasks('grunt-html-build');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    //grunt.loadNpmTasks('grunt-contrib-uglify');
+    //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-spritesmith');
 
     grunt.registerTask('default', [
         'build',
@@ -157,6 +168,7 @@ module.exports = function(grunt) {
         // 'jshint',
         // 'uglify',
         'htmlbuild',
-        'htmlmin'
+        'htmlmin',
+        'sprite'
     ]);
 };
