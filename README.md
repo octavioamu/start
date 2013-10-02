@@ -1,6 +1,4 @@
-# Start 
-
-<!-- [![Stories in Ready](https://badge.waffle.io/vicoapp/vico.png)](https://waffle.io/gabrihellmateus/start) -->
+# Start [![Stories in Ready](https://badge.waffle.io/vicoapp/vico.png)](https://waffle.io/gabrihellmateus/start)
 
 This is what I need to start a simple Front End project.
 
