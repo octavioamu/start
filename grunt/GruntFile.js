@@ -1,14 +1,15 @@
 module.exports = function(grunt) {
 
     // Project configuration
-    var project_files = [
-            '../javascript/main.js'
+    var banner = '/* \n*   Project: <%= pkg.projectName %> - v<%= pkg.version %> \n*   Repository: <%= pkg.repository %> \n*   Author: <%= pkg.developer %> \n*   Github: <%= pkg.github %> \n*   Start in: <%= pkg.startin %> \n*   Last Update: <%= pkg.lastupdate %> \n*/ \n',
+        js_scripts = [
+            '!<%= assets %>javascript/scripts.min.js',
+            '<%= assets %>javascript/*.js'
         ],
-        plugins_files = [
-            'javascript/plugins/*.js'
+        js_plugins = [
+            '<%= assets %>javascript/plugins/*.js'
         ],
-        banner = '/* \n*   Project: <%= pkg.projectName %> - v<%= pkg.version %> \n*   Repository: <%= pkg.repository %> \n*   Author: <%= pkg.developer %> \n*   Github: <%= pkg.github %> \n*   Start in: <%= pkg.startin %> \n*   Last Update: <%= pkg.lastupdate %> \n*/ \n',
-        uglify_files = plugins_files.concat(project_files);
+        uglify_files = js_plugins.concat(js_scripts);
 
     // Project configuration.
     grunt.initConfig({
@@ -21,7 +22,6 @@ module.exports = function(grunt) {
         staging: "<%= views %>staging/",
         development: "<%= views %>development/",
         production: "<%= views %>production/",
-
         less: {
             site: {
                 files: {
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            files: project_files,
+            files: uglify_files,
             options: {
                 globals: {
                     jQuery: true,
@@ -49,19 +49,21 @@ module.exports = function(grunt) {
                     module: true
                 },
                 bitwise: true,
-                expr: true
+                expr: true,
+                ignores: ['<%= assets %>javascript/scripts.min.js']
             }
         },
         uglify: {
             options: {
                 banner: banner,
+                compress: true,
                 mangle: {
                     except: ['jQuery']
                 }
             },
             my_target: {
                 files: {
-                    '../javascript/custom.js': uglify_files
+                    '<%= assets %>javascript/scripts.min.js': uglify_files
                 }
             }
         },
@@ -105,6 +107,19 @@ module.exports = function(grunt) {
                 ext: '.min.html',
             }
         },
+        jade: {
+          compile: {
+            options: {
+                pretty: true,
+                data: {
+                    debug: false
+                }
+            },
+            files: {
+              "<%= views %>jade/jade.html": ["<%= views %>jade/*.jade"]
+            }
+          }
+        },
         sprite:{
             all: {
                 src: ['<%= images %>*.png', '!<%= images %>sprite.png' ],
@@ -120,7 +135,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: [
-                    '!../javascript/custom.js',
+                    '!<%= assets %>javascript/scripts.min.js',
                     '../javascript/**/*.js',
                     '../javascript/*.js'
                 ],
@@ -137,7 +152,7 @@ module.exports = function(grunt) {
                 files: [
                     '<%= partials %>*.html'
                 ],
-                tasks: ['htmlbuild']
+                tasks: ['htmlbuild',]
             },
             html2: {
                 files: [
@@ -145,30 +160,43 @@ module.exports = function(grunt) {
                 ],
                 tasks: ['htmlmin']
             },
-        }
+            jade_html: {
+                files: [
+                  "<%= views %>jade/*.jade"
+                ],
+                tasks: ['jade']
+            }
+        },
+        concurrent: {
+            style:  ['less', 'csso', 'sprite'],
+            html:   ['htmlbuild', 'htmlmin', 'jade'],
+            js:     ['jshint', 'uglify'],
+            watch:  ['watch']
+        },
     });
 
+    // Style
     grunt.loadNpmTasks('grunt-csso');
-    grunt.loadNpmTasks('grunt-html-build');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    //grunt.loadNpmTasks('grunt-contrib-uglify');
-    //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-spritesmith');
 
-    grunt.registerTask('default', [
-        'build',
-        'watch'
-    ]);
+    // Html
+    grunt.loadNpmTasks('grunt-html-build');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-jade');
 
-    grunt.registerTask('build', [
-        'less',
-        'csso',
-        // 'jshint',
-        // 'uglify',
-        'htmlbuild',
-        'htmlmin',
-        'sprite'
+    // Js
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+
+    // Others
+    grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    grunt.registerTask('default', [
+        'concurrent:style',
+        'concurrent:html',
+        'concurrent:js',
+        'concurrent:watch'
     ]);
 };
