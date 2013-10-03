@@ -215,4 +215,5 @@ pip-log.txt
 .mr.developer.cfg
 
 #Custom folders
-grunt/node_modules
+/node_modules
+**/node_modules

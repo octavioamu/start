@@ -1,31 +1,26 @@
 module.exports = function(grunt) {
 
     // Project configuration
-    var banner = '/* \n*   Project: <%= pkg.projectName %> - v<%= pkg.version %> \n*   Repository: <%= pkg.repository %> \n*   Author: <%= pkg.developer %> \n*   Github: <%= pkg.github %> \n*   Start in: <%= pkg.startin %> \n*   Last Update: <%= pkg.lastupdate %> \n*/ \n',
+    var banner = '/* \n*   Project: <%= pkg.name %> - version <%= pkg.version %> \n*   Description: <%= pkg.description %> \n*   Repository: <%= pkg.repository %> \n*   Author: <%= pkg.developer %> \n*   Github: <%= pkg.github %> \n*   Start in: <%= pkg.startin %> \n*   Last Update: <%= pkg.lastupdate %> \n*/ \n',
         js_scripts = [
-            '!<%= assets %>javascript/scripts.min.js',
-            '<%= assets %>javascript/*.js'
+            '!<%= development %>assets/javascript/scripts.min.js',
+            '<%= development %>assets/javascript/*.js'
         ],
         js_plugins = [
-            '<%= assets %>javascript/plugins/*.js'
+            '<%= development %>assets/javascript/plugins/*.js'
         ],
         uglify_files = js_plugins.concat(js_scripts);
 
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        root: "../",
-        assets: "../assets/",
-        views: "../views/",
-        images: "<%= assets %>images/",
-        partials: "<%= views %>partials/",
-        staging: "<%= views %>staging/",
-        development: "<%= views %>development/",
-        production: "<%= views %>production/",
+        development: "development/",
+        staging: "staging/",
+        production: "production/",
         less: {
             site: {
                 files: {
-                    '<%= assets %>stylesheets/custom.css': '<%= assets %>less/import.less'
+                    '<%= staging %>assets/stylesheets/custom.css': '<%= development %>assets/less/import.less'
                 }
             }
         },
@@ -36,7 +31,7 @@ module.exports = function(grunt) {
                     banner: banner
                 },
                 files: {
-                    '<%= assets %>stylesheets/style.min.css': ['!<%= assets %>stylesheets/style.min.css', '<%= assets %>stylesheets/*.css']
+                    '<%= production %>assets/stylesheets/style.min.css': ['<%= staging %>assets/stylesheets/custom.css']
                 }
             }
         },
@@ -50,7 +45,7 @@ module.exports = function(grunt) {
                 },
                 bitwise: true,
                 expr: true,
-                ignores: ['<%= assets %>javascript/scripts.min.js']
+                ignores: ['<%= development %>assets/javascript/scripts.min.js']
             }
         },
         uglify: {
@@ -63,14 +58,15 @@ module.exports = function(grunt) {
             },
             my_target: {
                 files: {
-                    '<%= assets %>javascript/scripts.min.js': uglify_files
+                    '<%= staging %>assets/javascript/scripts.min.js': uglify_files,
+                    '<%= production %>assets/javascript/scripts.min.js': uglify_files
                 }
             }
         },
         htmlbuild: {
             dist: {
-                src: '<%= development %>*.html',
-                dest: '<%= staging %>/',
+                src: '<%= development %>views/*.html',
+                dest: '<%= staging %>',
                 options: {
                     // beautify: true,
                     // scripts: {
@@ -81,10 +77,10 @@ module.exports = function(grunt) {
                     //     min: '<%= assets %>stylesheets/style.min.css'
                     // },
                     sections: {
-                        head: '<%= partials %>head.html',
-                        'main-header': '<%= partials %>main-header.html',
-                        'main-footer': '<%= partials %>main-footer.html',
-                        'main-aside': '<%= partials %>main-aside.html'
+                        head: '<%= development %>partials/head.html',
+                        'main-header': '<%= development %>partials/main-header.html',
+                        'main-footer': '<%= development %>partials/main-footer.html',
+                        'main-aside': '<%= development %>partials/main-aside.html'
                     }
                 }
             }
@@ -103,8 +99,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: '<%= staging %>',
                 src: ['*.html'],
-                dest: '<%= production %>',
-                ext: '.min.html',
+                dest: '<%= production %>'
             }
         },
         jade: {
@@ -116,15 +111,15 @@ module.exports = function(grunt) {
                 }
             },
             files: {
-              "<%= views %>jade/jade.html": ["<%= views %>jade/*.jade"]
+              "<%= development %>jade/jade.html": ["<%= development %>jade/*.jade"]
             }
           }
         },
         sprite:{
             all: {
-                src: ['<%= images %>*.png', '!<%= images %>sprite.png' ],
-                destImg: '<%= images %>sprite.png',
-                destCSS: '<%= assets %>less/sprite.less',
+                src: ['<%= development %>assets/images/*.png', '!<%= development %>assets/images/sprite.png' ],
+                destImg: '<%= development %>assets/images/sprite.png',
+                destCSS: '<%= development %>assets/less/sprite.less',
                 algorithm: 'left-right',
                 padding: 2,
             }
@@ -135,49 +130,51 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: [
-                    '!<%= assets %>javascript/scripts.min.js',
-                    '../javascript/**/*.js',
-                    '../javascript/*.js'
+                    '<%= development %>assets/javascript/**/*.js',
+                    '<%= development %>assets/javascript/*.js'
                 ],
                 tasks: ['jshint', 'uglify']
             },
             stylesheets: {
                 files: [
-                    '../less/**/*.less',
-                    '../less/*.less'
+                    '<%= development %>assets/less/**/*.less',
+                    '<%= development %>assets/less/*.less'
                 ],
                 tasks: ['less, csso']
             },
             html: {
                 files: [
-                    '<%= partials %>*.html'
+                    '<%= development %>partials/*.html',
+                    '<%= development %>views/*.html'
                 ],
                 tasks: ['htmlbuild',]
             },
             html2: {
                 files: [
-                    '<%= partials %>*.html'
+                    '<%= development %>partials/*.html',
+                    '<%= development %>views/*.html'
                 ],
                 tasks: ['htmlmin']
             },
             jade_html: {
                 files: [
-                  "<%= views %>jade/*.jade"
+                  '<%= development %>jade/*.jade'
                 ],
                 tasks: ['jade']
             }
         },
         concurrent: {
-            style:  ['less', 'csso', 'sprite'],
-            html:   ['htmlbuild', 'htmlmin', 'jade'],
+            style:  ['less', 'sprite'],
+            html:   ['htmlbuild', 'jade'],
             js:     ['jshint', 'uglify'],
-            watch:  ['watch']
+            watch:  ['watch'],
+            production:  ['csso', 'htmlmin', 'uglify']
         },
     });
 
     // Style
-    grunt.loadNpmTasks('grunt-csso');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-csso');
     grunt.loadNpmTasks('grunt-spritesmith');
 
     // Html
@@ -190,13 +187,17 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Others
-    grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-concurrent');
 
     grunt.registerTask('default', [
         'concurrent:style',
         'concurrent:html',
         'concurrent:js',
         'concurrent:watch'
+    ]);
+
+    grunt.registerTask('production', [
+        'concurrent:production'
     ]);
 };
