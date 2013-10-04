@@ -655,6 +655,16 @@ blockquote p {
    ========================================================================== */
 /*  HTML, Body, Wrapper, Container
    ========================================================================== */
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  color: #4d4d4d;
+  font: 400 14px/20px Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background: red;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+}
 /*  Main Header
    ========================================================================== */
 /*  Main Aside

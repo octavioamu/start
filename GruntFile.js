@@ -3,7 +3,6 @@ module.exports = function(grunt) {
     // Project configuration
     var banner = '/* \n*   Project: <%= pkg.name %> - version <%= pkg.version %> \n*   Description: <%= pkg.description %> \n*   Repository: <%= pkg.repository %> \n*   Author: <%= pkg.developer %> \n*   Github: <%= pkg.github %> \n*   Start in: <%= pkg.startin %> \n*   Last Update: <%= pkg.lastupdate %> \n*/ \n',
         js_scripts = [
-            '!<%= development %>assets/javascript/scripts.min.js',
             '<%= development %>assets/javascript/*.js'
         ],
         js_plugins = [
@@ -14,13 +13,13 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        development: "development/",
-        staging: "staging/",
-        production: "production/",
+        development: "app/",
+        production: "public/",
+        url: "<%= production %>sample-page.html",
         less: {
             site: {
                 files: {
-                    '<%= staging %>assets/stylesheets/custom.css': '<%= development %>assets/less/import.less'
+                    '<%= development %>assets/stylesheets/custom.css': '<%= development %>assets/less/import.less'
                 }
             }
         },
@@ -31,7 +30,7 @@ module.exports = function(grunt) {
                     banner: banner
                 },
                 files: {
-                    '<%= production %>assets/stylesheets/style.min.css': ['<%= staging %>assets/stylesheets/custom.css']
+                    '<%= production %>assets/stylesheets/style.min.css': ['<%= development %>assets/stylesheets/custom.css']
                 }
             }
         },
@@ -44,8 +43,7 @@ module.exports = function(grunt) {
                     module: true
                 },
                 bitwise: true,
-                expr: true,
-                ignores: ['<%= development %>assets/javascript/scripts.min.js']
+                expr: true
             }
         },
         uglify: {
@@ -58,15 +56,14 @@ module.exports = function(grunt) {
             },
             my_target: {
                 files: {
-                    '<%= staging %>assets/javascript/scripts.min.js': uglify_files,
                     '<%= production %>assets/javascript/scripts.min.js': uglify_files
                 }
             }
         },
         htmlbuild: {
             dist: {
-                src: '<%= development %>views/*.html',
-                dest: '<%= staging %>',
+                src: '<%= development %>pages/*.html',
+                dest: '<%= development %>views/',
                 options: {
                     // beautify: true,
                     // scripts: {
@@ -97,23 +94,10 @@ module.exports = function(grunt) {
                     useShortDoctype: true
                 },
                 expand: true,
-                cwd: '<%= staging %>',
+                cwd: '<%= development %>views/',
                 src: ['*.html'],
                 dest: '<%= production %>'
             }
-        },
-        jade: {
-          compile: {
-            options: {
-                pretty: true,
-                data: {
-                    debug: false
-                }
-            },
-            files: {
-              "<%= development %>jade/jade.html": ["<%= development %>jade/*.jade"]
-            }
-          }
         },
         sprite:{
             all: {
@@ -133,43 +117,37 @@ module.exports = function(grunt) {
                     '<%= development %>assets/javascript/**/*.js',
                     '<%= development %>assets/javascript/*.js'
                 ],
-                tasks: ['jshint', 'uglify']
+                tasks: ['jshint']
             },
             stylesheets: {
                 files: [
                     '<%= development %>assets/less/**/*.less',
                     '<%= development %>assets/less/*.less'
                 ],
-                tasks: ['less, csso']
+                tasks: ['less']
             },
             html: {
                 files: [
                     '<%= development %>partials/*.html',
-                    '<%= development %>views/*.html'
+                    '<%= development %>pages/*.html'
                 ],
-                tasks: ['htmlbuild',]
-            },
-            html2: {
-                files: [
-                    '<%= development %>partials/*.html',
-                    '<%= development %>views/*.html'
-                ],
-                tasks: ['htmlmin']
-            },
-            jade_html: {
-                files: [
-                  '<%= development %>jade/*.jade'
-                ],
-                tasks: ['jade']
+                tasks: ['htmlbuild']
+            }
+        },
+        shell: {
+            listFolders: {
+                options: {
+                    stdout: true
+                },
+                command: ' open "<%= url %>" '
             }
         },
         concurrent: {
             style:  ['less', 'sprite'],
-            html:   ['htmlbuild', 'jade'],
+            html:   ['htmlbuild'],
             js:     ['jshint', 'uglify'],
-            watch:  ['watch'],
-            production:  ['csso', 'htmlmin', 'uglify']
-        },
+            production:  ['csso', 'htmlmin', 'uglify', 'shell']
+        }
     });
 
     // Style
@@ -180,13 +158,13 @@ module.exports = function(grunt) {
     // Html
     grunt.loadNpmTasks('grunt-html-build');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-contrib-jade');
 
     // Js
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Others
+    grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-concurrent');
 
@@ -194,7 +172,7 @@ module.exports = function(grunt) {
         'concurrent:style',
         'concurrent:html',
         'concurrent:js',
-        'concurrent:watch'
+        'watch'
     ]);
 
     grunt.registerTask('production', [
