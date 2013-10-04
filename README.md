@@ -4,19 +4,21 @@
 
 ## Contents
 
-- assets
-    * fonts
-    * images
-    * javascript
-    * less
-    * stylesheet
-+ grunt
-+ producion
-- views
-    * development
-    * partials
-    * producion
-    * staging
+- app
+  - assets
+      * fonts
+      * images
+      * javascript
+      * less
+      * stylesheets
+  + pages
+  + partials
+  + views
+- public
+  - assets
+      * images
+      * javascript
+      * stylesheets
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -33,7 +35,6 @@ For Styles:
 For HTML:
    * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin)
    * [grunt-contrib-htmlbuild](https://github.com/spatools/grunt-html-build)
-   * [grunt-contrib-jade](https://github.com/gruntjs/grunt-contrib-jade)
 
 For Javascript:
    * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
@@ -41,6 +42,7 @@ For Javascript:
 
 Others:
    * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
+   * [grunt-contrib-shell](https://github.com/sindresorhus/grunt-shell)
    * [grunt-contrib-concurrent](https://github.com/sindresorhus/grunt-concurrent)
 
 Feel free to use :D
