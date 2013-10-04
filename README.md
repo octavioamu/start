@@ -2,24 +2,6 @@
 
 > This is what I need to start a simple Front End project.
 
-## Contents
-
-- app
-  - assets
-      * fonts
-      * images
-      * javascript
-      * less
-      * stylesheets
-  + pages
-  + partials
-  + views
-- public
-  - assets
-      * images
-      * javascript
-      * stylesheets
-
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
 
