@@ -661,7 +661,7 @@ body {
   overflow-x: hidden;
   color: #4d4d4d;
   font: 400 14px/20px Helvetica, "Helvetica Neue", Arial, sans-serif;
-  background: red;
+  background: #f1f1f1;
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
 }
