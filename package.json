@@ -19,6 +19,9 @@
     "grunt-concurrent": "~0.4.0",
     "grunt-shell": "~0.4.0",
     "grunt-notify": "~0.2.13",
-    "grunt-contrib-imagemin": "~0.3.0"
+    "grunt-contrib-imagemin": "~0.3.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-open": "~0.2.2",
+    "grunt-contrib-concat": "~0.3.0"
   }
 }

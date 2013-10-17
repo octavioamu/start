@@ -27,7 +27,7 @@ For Images:
 
 Others:
    * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
-   * [grunt-contrib-shell](https://github.com/sindresorhus/grunt-shell)
    * [grunt-contrib-concurrent](https://github.com/sindresorhus/grunt-concurrent)
+   * [grunt-contrib-open](https://github.com/jsoverson/grunt-open)
 
 Feel free to use, fork, discuss :D

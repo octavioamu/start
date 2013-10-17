@@ -1,4 +1,10 @@
 //
+// Drowdown
+// ----------------------------------------------------------------
+
+$(document).ready(function (){
+
+});;//
 // Main scripts
 // ----------------------------------------------------------------
 
@@ -18,7 +24,3 @@ var SITE_URL  = window.location.href;
             event.stopPropagation();
         }
     };
-
-$(document).ready(function (){
-
-});
