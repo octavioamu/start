@@ -17,17 +17,20 @@ For Stylesheets:
    * [grunt-csso](https://github.com/t32k/grunt-csso)
    * [grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less)
 
-For Javascript:
-   * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
-   * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
-
 For Images:
    * [grunt-spritesmith](https://github.com/Ensighten/grunt-spritesmith)
    * [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
 
-Others:
+For Javascript:
+   * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
+   * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
+   * [grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat)
+
+For Development:
    * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
    * [grunt-contrib-concurrent](https://github.com/sindresorhus/grunt-concurrent)
    * [grunt-contrib-open](https://github.com/jsoverson/grunt-open)
+   * [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
+   * [grunt-contrib-notify](https://github.com/dylang/grunt-notify)
 
-Feel free to use, fork, discuss :D
+Feel free to use, fork or discuss :D

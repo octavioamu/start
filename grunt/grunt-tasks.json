@@ -1,0 +1,182 @@
+{
+  "development": "../app/",
+  "dev_images": "<%= development %>assets/images/",
+  "dev_less": "<%= development %>assets/less/",
+  "dev_stylesheets": "<%= development %>assets/stylesheets/",
+  "dev_javascripts": "<%= development %>assets/javascripts/",
+
+  "production": "../public/",
+  "prod_images": "<%= production %>assets/images/",
+  "prod_stylesheets": "<%= production %>assets/stylesheets/",
+  "prod_javascripts": "<%= production %>assets/javascripts/",
+
+  "url": "<%= production %>index.html",
+
+  "less": {
+    "site": {
+      "files": {
+        "<%= dev_stylesheets %>application.css": "<%= dev_less %>import.less"
+      }
+    }
+  },
+
+  "csso": {
+    "compress": {
+      "options": {
+        "report": "min"
+      },
+      "files": {
+        "<%= prod_stylesheets %>application.css": "<%= dev_stylesheets %>application.css"
+      }
+    }
+  },
+
+  "concat": {
+    "options" :{
+      "banner": "'use strict';"
+    },
+    "dist": {
+      "src": [
+        "<%= development %>assets/javascripts/specifics/*.js",
+        "<%= development %>assets/javascripts/plugins/*.js"
+      ],
+      "dest": "<%= dev_javascripts %>application.js"
+    }
+  },
+
+  "jshint": {
+    "files":[
+      "<%= development %>assets/javascripts/specifics/*.js",
+      "<%= development %>assets/javascripts/plugins/*.js"
+    ],
+    "options": {
+      "globals": {
+        "jQuery": true,
+        "console": true,
+        "module": true
+      },
+      "bitwise": true,
+      "expr": true
+    }
+  },
+
+  "uglify": {
+    "options": {
+      "compress": true,
+      "mangle": {
+        "except": ["jQuery"]
+      }
+    },
+    "my_target": {
+      "files": {
+        "<%= prod_javascripts %>application.js": "<%= dev_javascripts %>application.js"
+      }
+    }
+  },
+
+  "htmlbuild": {
+    "dist": {
+      "src": "<%= development %>views/*.html",
+      "dest": "<%= development %>",
+      "options": {
+        "sections": {
+          "head": "<%= development %>partials/head.html",
+          "main-header": "<%= development %>partials/main-header.html",
+          "main-footer": "<%= development %>partials/main-footer.html",
+          "main-aside": "<%= development %>partials/main-aside.html"
+        }
+      }
+    }
+  },
+
+  "htmlmin": {
+    "dist": {
+      "options": {
+        "removeComments": true,
+        "collapseWhitespace": true,
+        "collapseBooleanAttributes": true,
+        "removeRedundantAttributes": true,
+        "removeEmptyAttributes": true,
+        "removeOptionalTags": true,
+        "useShortDoctype": true
+      },
+      "expand": true,
+      "cwd": "<%= development %>",
+      "src": ["*.html"],
+      "dest": "<%= production %>"
+    }
+  },
+
+  "sprite": {
+    "all": {
+      "src": "<%= dev_images %>sprite/*.png",
+      "destImg": "<%= dev_images %>sprite.png",
+      "destCSS": "<%= dev_less %>sprite.less",
+      "algorithm": "left-right",
+      "padding": 2
+    }
+  },
+
+  "imagemin": {
+    "dynamic": {
+      "files": [{
+        "expand": true,
+        "cwd": "<%= dev_images %>",
+        "src": ["*.{png,jpg,gif}"],
+        "dest": "<%= prod_images %>"
+      }]
+    }
+  },
+
+  "watch": {
+    "options": {
+      "livereload": true
+    },
+    "javascripts": {
+      "files": [
+        "<%= dev_javascripts %>**/*.js",
+        "!<%= dev_javascripts %>lib/*.js"
+      ],
+      "tasks": ["jshint", "concat"]
+    },
+    "less": {
+      "files": [
+        "<%= dev_less %>**/*.less",
+        "<%= dev_les %>*.less"
+      ],
+      "tasks": ["less"]
+    },
+    "html": {
+      "files": [
+        "<%= development %>partials/*.html",
+        "<%= development %>views/*.html"
+      ],
+      "tasks": ["htmlbuild"]
+    }
+  },
+
+  "open" : {
+    "dev" : {
+      "path": "<%= url %>"
+    }
+  },
+
+  "connect": {
+    "server": {
+      "options": {
+        "port": 9000,
+        "base": ".",
+        "hostname": "localhost",
+        "livereload": true,
+        "open": true
+      }
+    }
+  },
+
+  "concurrent": {
+    "style":  ["less", "sprite"],
+    "html":   ["htmlbuild"],
+    "js":     ["jshint", "uglify"],
+    "build":  ["csso", "imagemin", "htmlmin", "uglify", "open"]
+  }
+}
