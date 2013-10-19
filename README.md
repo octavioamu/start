@@ -30,7 +30,7 @@ For production run:
 grunt build --force
 ```
 
-#### The grunt tasks in this project:
+### The grunt tasks in this project:
 
 For HTML:
    * [grunt-contrib-htmlbuild](https://github.com/spatools/grunt-html-build)
