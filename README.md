@@ -1,6 +1,6 @@
 # Start [![Stories in Ready](https://badge.waffle.io/gabrihellmateus/start.png?label=Ready)](https://waffle.io/gabrihellmateus/start)
 
-> This is a simple start to a Front End project.
+> Fron End Workflow
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
