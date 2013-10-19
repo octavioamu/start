@@ -11,7 +11,8 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 ## Usage
 Go to the grunt folder :
 
-```cd grunt
+```
+cd grunt
 ```
 Install all dependecies:
 
