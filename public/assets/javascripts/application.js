@@ -1,1 +1,1 @@
-"use strict";var SITE_URL=window.location.href;$body=$("body"),stopEvent=function(a){a.preventDefault?a.preventDefault():a.returnValue=!1,a.stopPropagation&&a.stopPropagation()},$(document).ready(function(){});
+!function(a){"use strict";window.location.href,a("body")}(jQuery),function(){"use strict"}(jQuery);

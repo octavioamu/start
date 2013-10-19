@@ -1,14 +1,18 @@
 {
   "development": "../app/",
-  "dev_images": "<%= development %>assets/images/",
-  "dev_less": "<%= development %>assets/less/",
-  "dev_stylesheets": "<%= development %>assets/stylesheets/",
-  "dev_javascripts": "<%= development %>assets/javascripts/",
+  "dev_assets": "<%= development %>assets/",
+  "dev_fonts": "<%= dev_assets %>fonts/",
+  "dev_images": "<%= dev_assets %>images/",
+  "dev_less": "<%= dev_assets %>less/",
+  "dev_stylesheets": "<%= dev_assets %>stylesheets/",
+  "dev_javascripts": "<%= dev_assets %>javascripts/",
 
   "production": "../public/",
-  "prod_images": "<%= production %>assets/images/",
-  "prod_stylesheets": "<%= production %>assets/stylesheets/",
-  "prod_javascripts": "<%= production %>assets/javascripts/",
+  "prod_assets": "<%= production %>assets/",
+  "prod_fonts": "<%= prod_assets %>fonts/",
+  "prod_images": "<%= prod_assets %>images/",
+  "prod_stylesheets": "<%= prod_assets %>stylesheets/",
+  "prod_javascripts": "<%= prod_assets %>javascripts/",
 
   "url": "<%= production %>index.html",
 
@@ -32,22 +36,38 @@
   },
 
   "concat": {
-    "options" :{
-      "banner": "'use strict';"
-    },
     "dist": {
       "src": [
-        "<%= development %>assets/javascripts/specifics/*.js",
-        "<%= development %>assets/javascripts/plugins/*.js"
+        "<%= dev_javascripts %>specifics/*.js",
+        "<%= dev_javascripts %>plugins/*.js"
       ],
       "dest": "<%= dev_javascripts %>application.js"
     }
   },
 
+  "copy": {
+    "fonts": {
+      "expand": true,
+      "cwd": "<%= dev_fonts %>",
+      "src": "*",
+      "dest": "<%= prod_assets %>fonts",
+      "flatten": true,
+      "filter": "isFile"
+    },
+    "javascripts_lib": {
+      "expand": true,
+      "cwd": "<%= dev_javascripts %>lib/",
+      "src": "*",
+      "dest": "<%= prod_javascripts %>lib/",
+      "flatten": true,
+      "filter": "isFile"
+    }
+  },
+
   "jshint": {
     "files":[
-      "<%= development %>assets/javascripts/specifics/*.js",
-      "<%= development %>assets/javascripts/plugins/*.js"
+      "<%= dev_javascripts %>specifics/*.js",
+      "<%= dev_javascripts %>plugins/*.js"
     ],
     "options": {
       "globals": {
@@ -118,13 +138,11 @@
   },
 
   "imagemin": {
-    "dynamic": {
-      "files": [{
-        "expand": true,
-        "cwd": "<%= dev_images %>",
-        "src": ["*.{png,jpg,gif}"],
-        "dest": "<%= prod_images %>"
-      }]
+    "all": {
+      "cwd": "<%= dev_images %>",
+      "expand": true,
+      "src": ["*.{png,jpg,gif}"],
+      "dest": "<%= prod_images %>"
     }
   },
 
@@ -135,7 +153,7 @@
     "javascripts": {
       "files": [
         "<%= dev_javascripts %>**/*.js",
-        "!<%= dev_javascripts %>lib/*.js"
+        "!<%= dev_javascripts %>application.js"
       ],
       "tasks": ["jshint", "concat"]
     },
@@ -176,7 +194,7 @@
   "concurrent": {
     "style":  ["less", "sprite"],
     "html":   ["htmlbuild"],
-    "js":     ["jshint", "uglify"],
-    "build":  ["csso", "imagemin", "htmlmin", "uglify", "open"]
+    "js":     ["jshint", "concat"],
+    "build":  ["csso", "imagemin", "htmlmin", "copy", "uglify", "open"]
   }
 }

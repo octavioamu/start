@@ -1,20 +1,30 @@
-'use strict';
-// Global Variables
-// -----------------------------------------------
+//
+// Main scripts
+// ----------------------------------------------------------------
 
-var SITE_URL  = window.location.href;
-  $body     = $('body'),
-  stopEvent = function(event) {
-    (event.preventDefault) ? event.preventDefault() : event.returnValue = false;
+(function ($) {
 
-    if(event.stopPropagation) {
-      event.stopPropagation();
-    }
-  };
+  'use strict';
+
+  // =Global Variables
+  var SITE_URL  = window.location.href,
+      $body     = $('body'),
+      stopEvent = function(event) {
+        (event.preventDefault) ? event.preventDefault() : event.returnValue = false;
+
+        if(event.stopPropagation) {
+          event.stopPropagation();
+        }
+      };
+
+})(jQuery);
+
+
 
 // Drowdown
 // ----------------------------------------------------------------
 
-$(document).ready(function (){
+(function ($) {
+  'use strict';
 
-});
+})(jQuery);
