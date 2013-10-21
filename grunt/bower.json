@@ -1,0 +1,28 @@
+{
+  "name": "start",
+  "version": "1.0.0",
+  "description": "Fron End Workflow",
+  "repository": "https://github.com/gabrihellmateus/start",
+  "startin": "27/09/2013",
+  "authors": {
+    "name": "Gabriel Mateus",
+    "github": "git.io/gabrielmateus"
+  },
+  "dependencies": {
+    "jquery": "~1.10.2",
+    "modernizr": "*"
+  },
+  "exportsOverride": {
+    "*":{
+      "lib": "jquery.min.js"
+    }
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ]
+}

@@ -146,6 +146,16 @@
     }
   },
 
+  "bower": {
+    "install": {
+      "options": {
+        "targetDir": "<%= dev_javascripts %>",
+        "verbose": true,
+        "cleanBowerDir": true
+      }
+    }
+  },
+
   "watch": {
     "options": {
       "livereload": true

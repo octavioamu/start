@@ -53,6 +53,7 @@ For Development:
    * [grunt-contrib-notify](https://github.com/dylang/grunt-notify)
    * [grunt-contrib-copy](https://github.com/gruntjs/grunt-contrib-copy)
    * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
+   * [grunt-contrib-bower](https://github.com/yatskevich/grunt-bower-task)
    * [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
    * [grunt-contrib-concurrent](https://github.com/sindresorhus/grunt-concurrent)
 
