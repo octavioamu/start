@@ -18,15 +18,22 @@ Install all dependecies:
 ```
 npm install
 ```
-For development, just run the grunt default task:
+For development, run the build task:
+
+```
+grunt build
+```
+*this will run bower and makes some pre-configurations*
+
+Then run the default task:
 
 ```
 grunt
 ```
-For production run:
 
+For production, run the deploy task
 ```
-grunt build --force
+grunt deploy --force
 ```
 
 #### The grunt tasks in this project:
@@ -53,8 +60,8 @@ For Development:
    * [grunt-contrib-notify](https://github.com/dylang/grunt-notify)
    * [grunt-contrib-copy](https://github.com/gruntjs/grunt-contrib-copy)
    * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
+   * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean)
    * [grunt-contrib-bower](https://github.com/yatskevich/grunt-bower-task)
    * [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
-   * [grunt-contrib-concurrent](https://github.com/sindresorhus/grunt-concurrent)
 
 Feel free to use, fork or discuss :D
