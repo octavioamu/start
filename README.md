@@ -1,6 +1,6 @@
 # Start [![Stories in Ready](https://badge.waffle.io/gabrihellmateus/start.png?label=Ready)](https://waffle.io/gabrihellmateus/start)
 
-> This is a simple start to a Front End project.
+> Fron End Workflow
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -11,7 +11,8 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 ## Usage
 Go to the grunt folder :
 
-```cd grunt
+```
+cd grunt
 ```
 Install all dependecies:
 
@@ -36,7 +37,7 @@ For production, run the deploy task
 grunt deploy --force
 ```
 
-#### The grunt tasks in this project:
+### The grunt tasks in this project:
 
 For HTML:
    * [grunt-contrib-htmlbuild](https://github.com/spatools/grunt-html-build)
