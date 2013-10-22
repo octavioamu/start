@@ -45,26 +45,42 @@ module.exports = function(grunt) {
   // Development
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-notify');
-  grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Tasks configurations
   grunt.initConfig(grunt.file.readJSON('grunt-tasks.json'));
 
+  // Build (development) Task
+  grunt.registerTask('build', [
+    'bower',
+    'copy:css_plugins',
+    'copy:js_plugins',
+    'copy:js_lib',
+    'clean'
+  ]);
+
   // Default (development) Task
   grunt.registerTask('default', [
-    'concurrent:style',
-    'concurrent:html',
-    'concurrent:js',
+    'htmlbuild',
+    "less",
+    "sprite",
+    'concat',
+    'jshint',
     'watch',
     'notify'
   ]);
 
-  // Build (production) Task
-  grunt.registerTask('build', [
-    'concurrent:build'
+  // Deploy (production) Task
+  grunt.registerTask('deploy', [
+    "htmlmin",
+    "csso",
+    "uglify",
+    "imagemin",
+    'copy:js_prod_lib',
+    "open"
   ]);
 };

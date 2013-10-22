@@ -10,11 +10,17 @@
   },
   "dependencies": {
     "jquery": "~1.10.2",
-    "modernizr": "*"
+    "flexslider": "*"
   },
   "exportsOverride": {
     "*":{
-      "lib": "jquery.min.js"
+      "external": [
+        "jquery.flexslider-min.js",
+        "flexslider.css"
+      ],
+      "lib": [
+        "jquery.min.js"
+      ]
     }
   },
   "ignore": [
