@@ -1,12 +1,12 @@
 {
-  "name": "start",
+  "name": "project-name",
   "version": "1.0.0",
-  "description": "Fron End Workflow",
-  "repository": "https://github.com/gabrihellmateus/start",
-  "startin": "27/09/2013",
+  "description": "project description",
+  "repository": "https://github.com/project-name",
+  "startin": "00/00/0000",
   "authors": {
-    "name": "Gabriel Mateus",
-    "github": "git.io/gabrielmateus"
+    "name": "your name",
+    "github": "your github"
   },
   "dependencies": {
     "jquery": "~1.10.2",
