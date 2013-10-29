@@ -70,7 +70,7 @@ grunt lint
   * [grunt-contrib-bower](https://github.com/yatskevich/grunt-bower-task)
   * [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
 
-## Release History
+# Release History
 * 0.1.0 Initial Release
 * 0.1.1 Creates the grunt folder and separates the tasks
 * 0.1.2 Creates app/development and public/production structure enviroments
