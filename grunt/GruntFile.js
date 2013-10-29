@@ -7,9 +7,9 @@
  * https://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
  */
 
-'use strict';
-
 module.exports = function(grunt) {
+
+  'use strict';
 
   // Variables
   var banner = '/* \n' +
@@ -30,17 +30,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   // For Style
-  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-csso');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-csslint');
 
   // For Images
   grunt.loadNpmTasks('grunt-spritesmith');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
 
   // Javascript
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Development
   grunt.loadNpmTasks('grunt-open');
@@ -54,7 +55,7 @@ module.exports = function(grunt) {
   // Tasks configurations
   grunt.initConfig(grunt.file.readJSON('grunt-tasks.json'));
 
-  // Build (development) Task
+  // Development - Build Task
   grunt.registerTask('build', [
     'bower',
     'copy:css_plugins',
@@ -63,18 +64,23 @@ module.exports = function(grunt) {
     'clean'
   ]);
 
-  // Default (development) Task
+  // Development - Test Task
+  grunt.registerTask('test', [
+    'csslint',
+    'jshint'
+  ]);
+
+  // Development - Default Task
   grunt.registerTask('default', [
     'htmlbuild',
     "less",
     "sprite",
     'concat',
-    'jshint',
     'watch',
     'notify'
   ]);
 
-  // Deploy (production) Task
+  // Production - Deploy Task
   grunt.registerTask('deploy', [
     "htmlmin",
     "csso",

@@ -1,4 +1,5 @@
 {
+  "Variables": "Routes",
   "development": "../app/",
   "dev_assets": "<%= development %>assets/",
   "dev_fonts": "<%= dev_assets %>fonts/",
@@ -6,132 +7,16 @@
   "dev_less": "<%= dev_assets %>less/",
   "dev_stylesheets": "<%= dev_assets %>stylesheets/",
   "dev_javascripts": "<%= dev_assets %>javascripts/",
-
   "production": "../public/",
   "prod_assets": "<%= production %>assets/",
   "prod_fonts": "<%= prod_assets %>fonts/",
   "prod_images": "<%= prod_assets %>images/",
   "prod_stylesheets": "<%= prod_assets %>stylesheets/",
   "prod_javascripts": "<%= prod_assets %>javascripts/",
-
   "url": "<%= production %>index.html",
 
-  "less": {
-    "site": {
-      "files": {
-        "<%= dev_stylesheets %>application.css": "<%= dev_less %>import.less"
-      }
-    }
-  },
-
-  "csso": {
-    "compress": {
-      "options": {
-        "report": "min"
-      },
-      "files": {
-        "<%= production %>assets/stylesheets/application.css": "<%= dev_stylesheets %>application.css"
-      }
-    }
-  },
-
-  "concat": {
-    "options": {
-      "stripBanners": true
-    },
-    "dist": {
-      "src": [
-        "!<%= dev_javascripts %>plugins/jquery.min.js",
-        "<%= dev_javascripts %>plugins/*.js",
-        "<%= dev_javascripts %>custom/*.js"
-      ],
-      "dest": "<%= dev_javascripts %>application.js"
-    }
-  },
-
-  "copy": {
-    "fonts": {
-      "expand": true,
-      "cwd": "<%= dev_fonts %>",
-      "src": "*",
-      "dest": "<%= prod_assets %>fonts",
-      "flatten": true,
-      "filter": "isFile"
-    },
-    "css_plugins": {
-      "expand": true,
-      "cwd": "<%= dev_javascripts %>",
-      "src": "external/**/*.css",
-      "dest": "<%= dev_stylesheets %>plugins",
-      "flatten": true,
-      "filter": "isFile"
-    },
-    "js_plugins": {
-      "expand": true,
-      "cwd": "<%= dev_javascripts %>",
-      "src": "external/**/*.js",
-      "dest": "<%= dev_javascripts %>plugins/",
-      "flatten": true,
-      "filter": "isFile"
-    },
-    "js_lib": {
-      "expand": true,
-      "cwd": "<%= dev_javascripts %>lib/",
-      "src": "*/**/*.js",
-      "dest": "<%= dev_javascripts %>lib/",
-      "flatten": true,
-      "filter": "isFile"
-    },
-    "js_prod_lib": {
-      "expand": true,
-      "cwd": "<%= dev_javascripts %>lib/",
-      "src": "*",
-      "dest": "<%= production %>assets/javascripts/lib/",
-      "flatten": true,
-      "filter": "isFile"
-    }
-  },
-
-  "clean": {
-    "options": {
-      "force": true
-    },
-    "external": [
-      "<%= dev_javascripts %>external",
-      "<%= dev_javascripts %>lib/jquery"
-    ]
-  },
-
-  "jshint": {
-    "files":[
-      "<%= dev_javascripts %>custom/*.js"
-    ],
-    "options": {
-      "globals": {
-        "jQuery": true,
-        "console": true,
-        "module": true
-      },
-      "bitwise": true,
-      "expr": true
-    }
-  },
-
-  "uglify": {
-    "options": {
-      "compress": true,
-      "mangle": {
-        "except": ["jQuery"]
-      }
-    },
-    "my_target": {
-      "files": {
-        "<%= production %>assets/javascripts/application.js": "<%= dev_javascripts %>application.js"
-      }
-    }
-  },
-
-  "htmlbuild": {
+  "Group tasks": "HTML",
+   "htmlbuild": {
     "dist": {
       "src": "<%= development %>views/*.html",
       "dest": "<%= development %>",
@@ -145,7 +30,6 @@
       }
     }
   },
-
   "htmlmin": {
     "dist": {
       "options": {
@@ -164,6 +48,70 @@
     }
   },
 
+  "Group tasks": "Stylesheet - LESS/CSS",
+  "less": {
+    "site": {
+      "files": {
+        "<%= dev_stylesheets %>application.css": "<%= dev_less %>import.less"
+      }
+    }
+  },
+  "csso": {
+    "compress": {
+      "options": {
+        "report": "min"
+      },
+      "files": {
+        "<%= production %>assets/stylesheets/application.css": "<%= dev_stylesheets %>application.css"
+      }
+    }
+  },
+  "csslint": {
+    "options": {
+      "csslintrc": ".csslintrc"
+    },
+    "strict": {
+      "src": ["<%= dev_stylesheets %>application.css"]
+    }
+  },
+
+  "Group tasks": "Javascript",
+  "jshint": {
+    "options": {
+      "jshintrc": ".jshintrc"
+    },
+    "files":[
+      "<%= dev_javascripts %>custom/*.js"
+    ]
+  },
+  "uglify": {
+    "options": {
+      "compress": true,
+      "mangle": {
+        "except": ["jQuery"]
+      }
+    },
+    "my_target": {
+      "files": {
+        "<%= production %>assets/javascripts/application.js": "<%= dev_javascripts %>application.js"
+      }
+    }
+  },
+  "concat": {
+    "options": {
+      "stripBanners": true
+    },
+    "dist": {
+      "src": [
+        "!<%= dev_javascripts %>plugins/jquery.min.js",
+        "<%= dev_javascripts %>plugins/*.js",
+        "<%= dev_javascripts %>custom/*.js"
+      ],
+      "dest": "<%= dev_javascripts %>application.js"
+    }
+  },
+
+  "Group tasks": "Image",
   "sprite": {
     "all": {
       "src": "<%= dev_images %>sprite/*.png",
@@ -173,7 +121,6 @@
       "padding": 2
     }
   },
-
   "imagemin": {
     "all": {
       "cwd": "<%= dev_images %>",
@@ -183,6 +130,7 @@
     }
   },
 
+  "Group tasks": "Development",
   "bower": {
     "install": {
       "options": {
@@ -192,7 +140,6 @@
       }
     }
   },
-
   "watch": {
     "options": {
       "livereload": true
@@ -219,13 +166,11 @@
       "tasks": ["htmlbuild"]
     }
   },
-
   "open" : {
     "dev" : {
       "path": "<%= url %>"
     }
   },
-
   "connect": {
     "server": {
       "options": {
