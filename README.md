@@ -55,7 +55,10 @@ grunt lint
 ##### Images:
   * [grunt-spritesmith](https://github.com/Ensighten/grunt-spritesmith)
   * [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
+ 
+
 > To install properly `grunt-spritesmith` you need to install this [requirements](https://github.com/Ensighten/grunt-spritesmith#requirements) first. 
+
 
 ##### Javascript:
   * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
