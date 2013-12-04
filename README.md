@@ -1,6 +1,6 @@
 # Start [![Stories in Ready](https://badge.waffle.io/gabrihellmateus/start.png?label=Ready)](https://waffle.io/gabrihellmateus/start)
 
-> Fron end workflow
+A Front End workflow to start a simple project
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -20,7 +20,7 @@ In `bower.json` configure the dependecies that you want. Then run the build task
 ```
 grunt build
 ```
-> This will run bower and makes some pre-configurations
+*This will run bower and makes some pre-configurations*
 
 You ready to go, in development run the default task:
 
@@ -33,7 +33,7 @@ For production, run the deploy task:
 ```
 grunt deploy --force
 ```
-> Force to overrides the images in the optimization
+*Force to overrides the images in the optimization*
 
 [OPTIONAL] For best pratices, hints and stuff, you can lint your `.css` and `.js` files with:
 
@@ -57,7 +57,7 @@ grunt lint
   * [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
  
 
-> To install properly `grunt-spritesmith` you need to install this [requirements](https://github.com/Ensighten/grunt-spritesmith#requirements) first. 
+*Note: to install properly `grunt-spritesmith` you need to install this [requirements](https://github.com/Ensighten/grunt-spritesmith#requirements) first* 
 
 
 #### Javascript:
