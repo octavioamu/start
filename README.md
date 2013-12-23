@@ -27,7 +27,7 @@ For production, run the deploy task:
 grunt deploy
 ```
 
-Here you can see the [list of dependecies](https://github.com/gabrihellmateus/start/blob/master/ListDependecies.md).
+Here you can see the [list of dependecies](https://github.com/gabrihellmateus/start/blob/master/DEPENDECIES.md).
 
 # Release History
 * 0.1.0 Initial Release

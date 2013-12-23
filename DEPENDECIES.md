@@ -1,4 +1,4 @@
-## The dependecies:
+## Dependecies
 
 #### HTML:
   * [grunt-htmlbuild](https://github.com/spatools/grunt-html-build)
@@ -13,13 +13,15 @@
   * [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
 
 
-*Note: to install properly `grunt-spritesmith` you need to install this [requirements](https://github.com/Ensighten/grunt-spritesmith#requirements) first*
+*Note: to install properly `grunt-spritesmith` you need to install this [requirements](https://github.com/Ensighten/grunt-spritesmith#requirements) first.*
 
 
 #### Javascript:
-  * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
   * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
   * [grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat)
+  * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
+
+*Note: check this [jshint options](http://www.jshint.com/docs/options/).*
 
 #### Development:
   * [grunt-open](https://github.com/jsoverson/grunt-open)
