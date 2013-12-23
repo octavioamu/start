@@ -14,10 +14,7 @@ module.exports = {
       //includePath: "<%= paths.dev_lib %>stylesheets/**/"
     },
     files: {
-      "<%= paths.dev_stylesheets %>application.css": [
-        "<%= paths.dev_lib %>stylesheets/**/*.css",
-        "<%= paths.dev_less %>import.less"
-      ]
+      "<%= paths.dev_stylesheets %>application.css": "<%= paths.dev_less %>import.less"
     }
   }
 }
