@@ -10,7 +10,7 @@ module.exports = {
       noUniversalSelectors: false,
       prefixWhitespace: false,
       strictPropertyOrder: false,
-      zeroUnits: false
+      zeroUnits: false,
       //includePath: "<%= paths.dev_lib %>stylesheets/**/"
     },
     files: {

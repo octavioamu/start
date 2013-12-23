@@ -1,35 +1,34 @@
-//   /$$$$$$                                               /$$
-//  |_  $$_/                                              | $$
-//    | $$   /$$$$$$/$$$$   /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$$
-//    | $$  | $$_  $$_  $$ /$$__  $$ /$$__  $$ /$$__  $$|_  $$_/   /$$_____/
-//    | $$  | $$ \ $$ \ $$| $$  \ $$| $$  \ $$| $$  \__/  | $$    |  $$$$$$
-//    | $$  | $$ | $$ | $$| $$  | $$| $$  | $$| $$        | $$ /$$ \____  $$
-//   /$$$$$$| $$ | $$ | $$| $$$$$$$/|  $$$$$$/| $$        |  $$$$/ /$$$$$$$/
-//  |______/|__/ |__/ |__/| $$____/  \______/ |__/         \___/  |_______/
-//                        | $$
-//                        | $$
-//                        |__/
+
+// Imports
+// =====================================================
 
 @charset 'UTF-8';
 
-/* Normalize */
+// Normalize
 @import 'lib/normalize';
 
-/* Variables */
+// Variables
 @import 'variables';
 
-/* Useful Mixins */
+// Useful Mixins
 @import 'lib/mixins';
 
-/* Grid */
-@import 'lib/grid';
-
-/* Wordpress */
-@import 'lib/wordpress';
-
-/* Site Styles */
+// Site Styles
 @import 'modules';
 @import 'forms';
 @import 'types';
-@import 'structure';
 @import 'pages';
+@import 'structure';
+
+// Optional
+// @import 'lib/wordpress';
+// @import 'lib/grid';
+
+
+
+// Delete this
+article {
+  text-align: center;
+
+  .incoming { margin: 30px 0 0 }
+}

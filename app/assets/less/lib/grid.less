@@ -1,17 +1,10 @@
-//    /$$$$$$            /$$       /$$
-//   /$$__  $$          |__/      | $$
-//  | $$  \__/  /$$$$$$  /$$  /$$$$$$$
-//  | $$ /$$$$ /$$__  $$| $$ /$$__  $$
-//  | $$|_  $$| $$  \__/| $$| $$  | $$
-//  | $$  \ $$| $$      | $$| $$  | $$
-//  |  $$$$$$/| $$      | $$|  $$$$$$$
-//   \______/ |__/      |__/ \_______/
+
+// Grid
+// =====================================================
 
 
-/*  Columns
-   ========================================================================== */
-
-/* Grid Sizes */
+//  Grid Sizes
+//  -----------------------------------------------------
 @columns: 12;
 @column-width: 48px;
 @gutter-width: 32px;
@@ -21,56 +14,44 @@
 
 .row { .cf }
 
-.grid(@x) {
-    width: ((@gutter-width * @x) + (@column-width * @x)) - @gutter-width;
-}
+.grid(@x) { width: ((@gutter-width * @x) + (@column-width * @x)) - @gutter-width }
 
-.width(@x) {
-    width: ((@gutter-width * @x) + (@column-width * @x)) - @gutter-width;
-}
+.width(@x) { width: ((@gutter-width * @x) + (@column-width * @x)) - @gutter-width }
 
 .column-centered(@x) {
-    width: ((@gutter-width * @x) + (@column-width * @x)) - @gutter-width;
-    margin: 0 auto;
+  width: ((@gutter-width * @x) + (@column-width * @x)) - @gutter-width;
+  margin: 0 auto;
 }
 
-.margin-left(@x: 1) {
-    margin-left: @gutter-width;
-}
+.margin-left(@x: 1) { margin-left: @gutter-width }
 
-.padding-left(@x: 1) {
-    padding-left: @gutter-width;
-}
+.padding-left(@x: 1) { padding-left: @gutter-width }
 
-.margin-right(@x: 1) {
-    margin-right: @gutter-width;
-}
+.margin-right(@x: 1) { margin-right: @gutter-width }
 
-.padding-right(@x: 1) {
-    padding-right: @gutter-width;
-}
+.padding-right(@x: 1) { padding-right: @gutter-width }
 
 .column {
-    display: inline-block;
-    vertical-align: top;
+  display: inline-block;
+  vertical-align: top;
 
-    &.one    { .grid(01) }
-    &.two    { .grid(02) }
-    &.three  { .grid(03) }
-    &.four   { .grid(04) }
-    &.five   { .grid(05) }
-    &.six    { .grid(06) }
-    &.seven  { .grid(07) }
-    &.eight  { .grid(08) }
-    &.nine   { .grid(09) }
-    &.ten    { .grid(10) }
-    &.eleven { .grid(11) }
-    &.twelve { .width(12) }
+  &.one    { .grid(01) }
+  &.two    { .grid(02) }
+  &.three  { .grid(03) }
+  &.four   { .grid(04) }
+  &.five   { .grid(05) }
+  &.six    { .grid(06) }
+  &.seven  { .grid(07) }
+  &.eight  { .grid(08) }
+  &.nine   { .grid(09) }
+  &.ten    { .grid(10) }
+  &.eleven { .grid(11) }
+  &.twelve { .width(12) }
 
-    + .column { margin-left: @gutter-width - 5px }
+  + .column { margin-left: @gutter-width - 5px }
 
-    &.centered {
-        margin: 0 auto !important;
-        display: block;
-    }
+  &.centered {
+      margin: 0 auto !important;
+      display: block;
+  }
 }

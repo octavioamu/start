@@ -1,6 +1,6 @@
 # Start [![Stories in Ready](https://badge.waffle.io/gabrihellmateus/start.png?label=Ready)](https://waffle.io/gabrihellmateus/start)
 
-A Front End development/production workflow
+> A Front End development/production workflow.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -15,7 +15,13 @@ Go to the grunt folder and install all dependecies:
 npm install
 ```
 
-In development run the default task:
+Frist, run the build task:
+
+```
+grunt build
+```
+
+For development run the default task:
 
 ```
 grunt
@@ -27,16 +33,18 @@ For production, run the deploy task:
 grunt deploy
 ```
 
-Here you can see the [list of dependecies](https://github.com/gabrihellmateus/start/blob/master/DEPENDECIES.md).
+## Dependecies
 
-# Release History
+Check the [list of dependecies](https://github.com/gabrihellmateus/start/blob/master/DEPENDECIES.md).
+
+## Release History
 * 0.1.0 Initial Release
 * 0.1.1 Creates the grunt folder and separates the tasks
 * 0.1.2 Creates app/development and public/production structure enviroments
 * 0.1.3 Creates the task directory.
 
 
-##License
+## License
 Copyright (c) 2013 gabrihellmateus
 
 Licensed under the MIT license.
