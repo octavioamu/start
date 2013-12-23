@@ -3,7 +3,7 @@
   "dev_assets": "./app/assets/",
   "dev_fonts": "./app/assets/fonts/",
   "dev_images": "./app/assets/images/",
-  "dev_less": "./app/assets/less/",
+  "dev_sass": "./app/assets/sass/",
   "dev_lib": "./app/assets/lib/",
   "dev_stylesheets": "./app/assets/stylesheets/",
   "dev_javascripts": "./app/assets/javascripts/",

@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     paths: grunt.file.readJSON('paths.json'),
     htmlbuild: config("htmlbuild"),
     htmlmin: config("htmlmin"),
-    recess: config("recess"),
+    sass: config("sass"),
     csso: config("csso"),
     jshint: config("jshint"),
     uglify: config("uglify"),

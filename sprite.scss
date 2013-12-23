@@ -1,0 +1,75 @@
+  $dribbble_over-x: 0px;
+  $dribbble_over-y: 0px;
+  $dribbble_over-offset-x: 0px;
+  $dribbble_over-offset-y: 0px;
+  $dribbble_over-width: 21px;
+  $dribbble_over-height: 21px;
+  $dribbble_over-total-width: 113px;
+  $dribbble_over-total-height: 21px;
+  $dribbble_over-image: './app/assets/images/sprite.png';
+  $dribbble_over: 0px 0px 0px 0px 21px 21px 113px 21px './app/assets/images/sprite.png';
+  $facebook_over-x: 23px;
+  $facebook_over-y: 0px;
+  $facebook_over-offset-x: -23px;
+  $facebook_over-offset-y: 0px;
+  $facebook_over-width: 21px;
+  $facebook_over-height: 21px;
+  $facebook_over-total-width: 113px;
+  $facebook_over-total-height: 21px;
+  $facebook_over-image: './app/assets/images/sprite.png';
+  $facebook_over: 23px 0px -23px 0px 21px 21px 113px 21px './app/assets/images/sprite.png';
+  $googleplus_over-x: 46px;
+  $googleplus_over-y: 0px;
+  $googleplus_over-offset-x: -46px;
+  $googleplus_over-offset-y: 0px;
+  $googleplus_over-width: 21px;
+  $googleplus_over-height: 21px;
+  $googleplus_over-total-width: 113px;
+  $googleplus_over-total-height: 21px;
+  $googleplus_over-image: './app/assets/images/sprite.png';
+  $googleplus_over: 46px 0px -46px 0px 21px 21px 113px 21px './app/assets/images/sprite.png';
+  $linkedin_over-x: 69px;
+  $linkedin_over-y: 0px;
+  $linkedin_over-offset-x: -69px;
+  $linkedin_over-offset-y: 0px;
+  $linkedin_over-width: 21px;
+  $linkedin_over-height: 21px;
+  $linkedin_over-total-width: 113px;
+  $linkedin_over-total-height: 21px;
+  $linkedin_over-image: './app/assets/images/sprite.png';
+  $linkedin_over: 69px 0px -69px 0px 21px 21px 113px 21px './app/assets/images/sprite.png';
+  $twitter_over-x: 92px;
+  $twitter_over-y: 0px;
+  $twitter_over-offset-x: -92px;
+  $twitter_over-offset-y: 0px;
+  $twitter_over-width: 21px;
+  $twitter_over-height: 21px;
+  $twitter_over-total-width: 113px;
+  $twitter_over-total-height: 21px;
+  $twitter_over-image: './app/assets/images/sprite.png';
+  $twitter_over: 92px 0px -92px 0px 21px 21px 113px 21px './app/assets/images/sprite.png';
+
+  @mixin sprite-width($sprite) {
+    width: nth($sprite, 5);
+  }
+
+  @mixin sprite-height($sprite) {
+    height: nth($sprite, 6);
+  }
+
+  @mixin sprite-position($sprite) {
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    background-position: $sprite-offset-x  $sprite-offset-y;
+  }
+
+  @mixin sprite-image($sprite) {
+    background-image: url(nth($sprite, 9));
+  }
+
+  @mixin sprite($sprite) {
+    @include sprite-image($sprite);
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
+  }

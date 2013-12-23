@@ -9,12 +9,12 @@ module.exports = {
     ],
     tasks: ["jshint", "concat"]
   },
-  recess: {
+  sass: {
     files: [
-      "<%= paths.dev_less %>**/*.less",
-      "<%= paths.dev_less %>*.less"
+      "<%= paths.dev_sass %>**/*.scss",
+      "<%= paths.dev_sass %>*.scss"
     ],
-    tasks: ["recess"]
+    tasks: ["sass"]
   },
   html: {
     files: [

@@ -6,7 +6,7 @@
 
 #### Stylesheets:
   * [grunt-csso](https://github.com/t32k/grunt-csso)
-  * [grunt-recess](https://github.com/sindresorhus/grunt-recess)
+  * [grunt-sass](https://github.com/gruntjs/grunt-contrib-sass)
 
 #### Images:
   * [grunt-spritesmith](https://github.com/Ensighten/grunt-spritesmith)
