@@ -33,7 +33,7 @@ Here you can see the [list of dependecies](https://github.com/gabrihellmateus/st
 * 0.1.0 Initial Release
 * 0.1.1 Creates the grunt folder and separates the tasks
 * 0.1.2 Creates app/development and public/production structure enviroments
-* 0.1.3 Creates the task folder.
+* 0.1.3 Creates the task directory.
 
 
 ##License
