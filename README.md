@@ -9,13 +9,13 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 
 
 ## Usage
-Go to the grunt folder and install all dependecies:
+Install all dependecies:
 
 ```
 npm install
 ```
 
-Frist, run the build task:
+Then run the build task:
 
 ```
 grunt build
