@@ -9,26 +9,20 @@
     "github": "your github"
   },
   "dependencies": {
-    "jquery": "~1.10.2",
-    "flexslider": "*"
+    "html5shiv": "latest",
+    "requirejs": "latest",
+    "normalize-css": "latest"
   },
   "exportsOverride": {
-    "*":{
-      "external": [
-        "jquery.flexslider-min.js",
-        "flexslider.css"
+    "*": {
+      "javasripts" : [
+        "jquery.min.js",
+        "require.js",
+        "**/html5shiv.js"
       ],
-      "lib": [
-        "jquery.min.js"
+      "stylesheets" : [
+        "normalize.css"
       ]
     }
-  },
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "components",
-    "test",
-    "tests"
-  ]
+  }
 }

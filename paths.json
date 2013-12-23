@@ -1,0 +1,17 @@
+{
+  "development": "./app/",
+  "dev_assets": "./app/assets/",
+  "dev_fonts": "./app/assets/fonts/",
+  "dev_images": "./app/assets/images/",
+  "dev_less": "./app/assets/less/",
+  "dev_lib": "./app/assets/lib/",
+  "dev_stylesheets": "./app/assets/stylesheets/",
+  "dev_javascripts": "./app/assets/javascripts/",
+  "production": "./public/",
+  "prod_assets": "./public/assets/",
+  "prod_fonts": "./public/fonts/",
+  "prod_images": "./public/images/",
+  "prod_stylesheets": "./public/stylesheets/",
+  "prod_javascripts": "./public/javascripts/",
+  "url": "./public/index.html"
+}
